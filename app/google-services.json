@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "423800664424",
+    "firebase_url": "https://orderapp-ad1bf.firebaseio.com",
+    "project_id": "orderapp-ad1bf",
+    "storage_bucket": "orderapp-ad1bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423800664424:android:45e79cb9571ab941aba6dd",
+        "android_client_info": {
+          "package_name": "com.mustafasuleymankinik.orderapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423800664424-61cbm9elmvnar75mf1b5v2tn5j0sig98.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAk4_8e33bP3sn_sSGtkuZIOjqBXz5juho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "423800664424-61cbm9elmvnar75mf1b5v2tn5j0sig98.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
