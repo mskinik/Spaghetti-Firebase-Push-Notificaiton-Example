@@ -31,6 +31,10 @@ import com.google.firebase.database.ServerValue;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.onesignal.OneSignal;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,6 +43,7 @@ import java.util.UUID;
 public class WaiterPanel extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     Uri uri;
+    String notificationId;
     ImageView imageView;
     Bitmap bitmap;
     FirebaseDatabase firebaseDatabase;
@@ -59,6 +64,21 @@ public class WaiterPanel extends AppCompatActivity {
         imageView=findViewById(R.id.imageView);
         v1EditText=findViewById(R.id.editTextValue1);
         v2EditText=findViewById(R.id.editTextValue2);
+
+        // Logging set to help debug issues, remove before releasing your app.
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
+
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
+        OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
+            @Override
+            public void idsAvailable(String userId, String registrationId) {
+                notificationId=userId;
+            }
+        });
     }
 
     @Override
@@ -155,7 +175,11 @@ public class WaiterPanel extends AppCompatActivity {
                 });
             }
         });
-
+        try {
+            OneSignal.postNotification(new JSONObject("{'contents': {'en':'"+"Values: "+value1+" "+value2+"'}, 'include_player_ids': ['" + notificationId + "']}"), null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 
