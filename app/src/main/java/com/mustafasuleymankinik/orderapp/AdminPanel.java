@@ -39,7 +39,7 @@ public class AdminPanel extends AppCompatActivity {
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseDatabase=FirebaseDatabase.getInstance();
         databaseReference=firebaseDatabase.getReference("Database");
-        query=databaseReference.orderByChild("ValuesChild");
+        query=databaseReference.orderByChild("ValuesTime");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
